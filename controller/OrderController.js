@@ -172,13 +172,13 @@ $("#btn-add-to-cart").on("click", () => {
   const qty = parseInt($("#order-qty").val());
 
   if (!item_id || isNaN(qty) || qty <= 0) {
-    alert("කරුණාකර නිවැරදි Item එකක් සහ Quantity එකක් තෝරන්න.");
+    alert("add valid quanity and item.");
     return;
   }
 
   const selectedItem = item_array.find((item) => item.id === item_id);
   if (!selectedItem) {
-    alert("Item එක සොයාගත නොහැක.");
+    alert("cant find item.");
     return;
   }
 
@@ -188,7 +188,7 @@ $("#btn-add-to-cart").on("click", () => {
 
   if (newTotalQty > selectedItem.qty) {
     alert(
-      `Error: තොගයේ ඇත්තේ ${selectedItem.qty} ක් පමණි. Cart එකේ දැනටමත් ${currentCartQty} ක් ඇත. තවත් ${qty} ක් එකතු කළ නොහැක!`
+      `Error: stock has ${selectedItem.qty} only. Cart has ${currentCartQty}. cant added ${qty} more!`
     );
     return;
   }
